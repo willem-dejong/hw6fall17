@@ -31,7 +31,17 @@ Given /^I am on the RottenPotatoes home page$/ do
  Then /^(?:|I )should see "([^"]*)"$/ do |text|
     expect(page).to have_content(text)
  end
-
+Then /^There is a '(button|field)' with ID of '(.*?)'$/ do |type, id|
+    list_of_type=nil
+    if type=='button'
+        list_of_type=find_button(id)
+    else
+        list_of_type=find_field(id)
+    end
+    puts list_of_type
+    
+  #pending # Write code here that turns the phrase above into concrete actions
+end
  When /^I have edited the movie "(.*?)" to change the rating to "(.*?)"$/ do |movie, rating|
   click_on "Edit"
   select rating, :from => 'Rating'
