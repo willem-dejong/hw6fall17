@@ -81,9 +81,7 @@ class MoviesController < ApplicationController
       redirect_to movies_path
       return
     end
-    puts "******************"
     params["tmdb_movies"].keys.each do |id|
-      puts id
       Movie.create_from_tmdb(id)
     end
     flash[:notice]="Movies successfully added to Rotten Potatoes"
